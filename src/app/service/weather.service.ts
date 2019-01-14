@@ -12,7 +12,7 @@ export class WeatherService {
   private API_URL = 'https://api.openweathermap.org/data/2.5/weather?';
   public currentWeather: Current;
   error: string;
-  units: string;
+  units = "metric";
   constructor(private http: HttpClient) { }
 
   get url() {
@@ -23,6 +23,16 @@ export class WeatherService {
     return; 
   }
 
+  unitFor(data: string): string {
+    switch (data) {
+      case "temp":
+        return (this.units === "metric") ? "°C" : "°F";
+      case "wind":
+        return (this.units === "metric") ? "m/s" : "m/h"
+      default:
+        break;
+    }
+  }
   get data(): Observable<Current> {
     if (this.cityName && this.cityName.length > 2) {
     return this.http.get<Current>(this.url)

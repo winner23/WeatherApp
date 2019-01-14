@@ -2,7 +2,7 @@
   <h3>Weather for {{ weatherService.currentWeather.name }}</h3>
   <h2>
       <img [src]="picture" [alt]="weatherService.currentWeather.weather[0]?.description">
-      {{ weatherService.currentWeather.main.temp }}
+      {{ weatherService.currentWeather.main.temp }}{{weatherService.unitFor("temp")}}
   </h2>
   <p>Preasure: {{weatherService.currentWeather.main.pressure}} hpa</p>
   <p>Humidity : {{weatherService.currentWeather.main.humidity}}%</p>
