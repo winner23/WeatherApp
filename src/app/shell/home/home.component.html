@@ -1,0 +1,13 @@
+<div class="container" *ngIf="weatherService.currentWeather">
+  <h3>Weather for {{ weatherService.currentWeather.name }}</h3>
+  <h2>
+      <img [src]="picture" [alt]="weatherService.currentWeather.weather[0]?.description">
+      {{ weatherService.currentWeather.main.temp }}
+  </h2>
+  <p>Preasure: {{weatherService.currentWeather.main.pressure}} hpa</p>
+  <p>Humidity : {{weatherService.currentWeather.main.humidity}}%</p>
+  <p>Wind: {{}}</p>
+</div>
+<div class="alert alert-primary" role="alert" *ngIf="weatherService.error">
+    {{weatherService.error}}
+  </div>
