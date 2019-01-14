@@ -6,7 +6,7 @@
   </h2>
   <p>Preasure: {{weatherService.currentWeather.main.pressure}} hpa</p>
   <p>Humidity : {{weatherService.currentWeather.main.humidity}}%</p>
-  <p>Wind: {{}}</p>
+  <p>Wind: {{weatherService.currentWeather.wind.speed}}</p>
 </div>
 <div class="alert alert-primary" role="alert" *ngIf="weatherService.error">
     {{weatherService.error}}
