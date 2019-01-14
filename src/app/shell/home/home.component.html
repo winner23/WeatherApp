@@ -4,9 +4,12 @@
       <img [src]="picture" [alt]="weatherService.currentWeather.weather[0]?.description">
       {{ weatherService.currentWeather.main.temp }}{{weatherService.unitFor("temp")}}
   </h2>
-  <p>Preasure: {{weatherService.currentWeather.main.pressure}} hpa</p>
+  <p>Pressure: {{weatherService.currentWeather.main.pressure}} hpa</p>
   <p>Humidity : {{weatherService.currentWeather.main.humidity}}%</p>
-  <p>Wind: {{weatherService.currentWeather.wind.speed}}</p>
+  <p>Wind: {{weatherService.currentWeather.wind.speed}}{{weatherService.unitFor("wind")}}
+    <img *ngIf="weatherService.currentWeather.wind.deg" src="assets/wind-direct.svg" [ngStyle]="{transform: 'rotate(' + weatherService.currentWeather.wind.deg + 'deg)'}" id="imgWind">
+    [{{weatherService.currentWeather.wind.deg}}]
+  </p>
 </div>
 <div class="alert alert-primary" role="alert" *ngIf="weatherService.error">
     {{weatherService.error}}
