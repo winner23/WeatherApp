@@ -11,12 +11,12 @@ export class FormComponent implements OnInit {
   cityName: string;
   isFound: false;
   currentWeather: Current;
-  selectedDegre = false;
+  temperatureType = "C";
   constructor(public weatherService: WeatherService) { }
 
   ngOnInit() {
   }
-  onSubmit() {
+  find() {
     if (this.cityName) {
       this.weatherService.cityName = this.cityName;
       this.weatherService.data.subscribe ( response => {
@@ -26,5 +26,10 @@ export class FormComponent implements OnInit {
         }
       })
     }
+  }
+  togle(){
+    this.weatherService.units = (this.temperatureType === "C") ? "metric" : "imperial";
+    this.find();
+    // console.log(this.model);
   }
 }

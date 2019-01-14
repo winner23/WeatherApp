@@ -8,6 +8,7 @@ import { FormComponent } from './shell/form/form.component';
 import { HomeComponent } from './shell/home/home.component';
 import { ThreeForecastComponent } from './shell/three-forecast/three-forecast.component';
 import { TenForecastComponent } from './shell/ten-forecast/ten-forecast.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { TenForecastComponent } from './shell/ten-forecast/ten-forecast.componen
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
     AppRoutingModule
   ],
   providers: [
