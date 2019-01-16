@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/service/weather.service';
 import { Current } from 'src/app/models/current.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -9,22 +10,30 @@ import { Current } from 'src/app/models/current.model';
 })
 export class FormComponent implements OnInit {
   cityName: string;
-  isFound: false;
+  isFound = false;
   currentWeather: Current;
   temperatureType = "C";
-  constructor(public weatherService: WeatherService) { }
+  constructor(public weatherService: WeatherService, private router: Router) { }
 
   ngOnInit() {
   }
   find() {
+    this.router.navigate([""]);
     if (this.cityName) {
       this.weatherService.cityName = this.cityName;
-      this.weatherService.data.subscribe ( response => {
-        if (response) {
-          this.currentWeather = response;
-          this.weatherService.currentWeather = this.currentWeather;
-        }
-      })
+      try {
+        this.weatherService.weather.subscribe ( response => {
+          if (response) {
+            this.currentWeather = response;
+            this.isFound = true;
+            this.weatherService.currentWeather = this.currentWeather;
+          }  
+        });  
+      } catch (error) {
+        this.isFound = false;
+        this.currentWeather = undefined;
+        this.weatherService.currentWeather = this.currentWeather;
+      }
     }
   }
   togle(){
