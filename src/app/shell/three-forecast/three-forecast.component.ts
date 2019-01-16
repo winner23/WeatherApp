@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WeatherService } from 'src/app/service/weather.service';
+import { Forecast } from 'src/app/models/forecast.model';
 
 @Component({
   selector: 'app-three-forecast',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThreeForecastComponent implements OnInit {
 
-  constructor() { }
+  public forecastHourly: Forecast[];
+
+  constructor(public serviceWeather: WeatherService) { }
 
   ngOnInit() {
+
   }
 
 }
