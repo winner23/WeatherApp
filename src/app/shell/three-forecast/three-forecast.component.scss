@@ -4,3 +4,8 @@
 .description {
   font-size: 12px;
 }
+#forecastTable {
+  tr:nth-child(2n) {
+    background: #f0f0f0;
+   } 
+}

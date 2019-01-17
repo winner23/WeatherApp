@@ -1,22 +1,22 @@
-<header>
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<div class="container">
+  <header>
+    <nav class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
+      <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+              [attr.aria-expanded]="navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <form class="form-inline my-2 my-lg-0" (ngSubmit)="find()">
           <input class="form-control mr-sm-2" type="search" placeholder="City" aria-label="Search" [(ngModel)]="cityName" name="city" required>
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
       </form>
       <a class="nav-link" [routerLink]="['/']">Current Weather</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" *ngIf="isFound && !weatherService.error">
+      <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" [routerLink]="['/forecast3']">5 Days Forecast<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['/forecast10']">10 Days Forecast</a>
+            <a class="nav-link"  [routerLink]="['/forecast10']">10 Days Forecast</a>
           </li>
         </ul>
       </div>
@@ -29,5 +29,5 @@
         </label>
       </div>
     </nav>
-  </div>
-</header>
+  </header>
+</div>

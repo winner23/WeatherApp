@@ -1,10 +1,11 @@
 <div class="container" *ngIf="forecastHourly">
-  <table mdbTable>
+  <table mdbTable id="forecastTable">
     <tbody>
       <tr mdbTableCol *ngFor="let day of forecastHourly">
         <th scope="row">
          <div *ngIf="isNextDay(day)">
-           {{day.dt_txt | date:"dd MMM"}}
+           <div>{{day.dt_txt | date:"dd MMM"}}</div>
+           <div>{{day.dt_txt | date:"EEEE"}}</div>
          </div>
       </th>
       <td>
