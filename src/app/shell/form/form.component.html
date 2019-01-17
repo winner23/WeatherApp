@@ -11,7 +11,7 @@
       </form>
       <a class="nav-link" [routerLink]="['/']">Current Weather</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" *ngIf="isFound">
+        <ul class="navbar-nav mr-auto" *ngIf="isFound && !weatherService.error">
           <li class="nav-item active">
             <a class="nav-link" [routerLink]="['/forecast3']">5 Days Forecast<span class="sr-only">(current)</span></a>
           </li>

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   update() {
     console.log(this.currentWeather);
   }
-  get picture() {
-      return "http://openweathermap.org/img/w/" + this.weatherService.currentWeather.weather[0].icon + ".png";
+  get pictureUrl() {
+      return "https://openweathermap.org/img/w/" + this.weatherService.currentWeather.weather[0].icon + ".png";
   }
 }

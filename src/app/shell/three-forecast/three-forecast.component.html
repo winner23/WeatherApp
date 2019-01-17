@@ -1,3 +1,27 @@
-<p>
-  three-forecast works!
-</p>
+<div class="container" *ngIf="forecastHourly">
+  <table mdbTable>
+    <tbody>
+      <tr mdbTableCol *ngFor="let day of forecastHourly">
+        <th scope="row">
+         <div *ngIf="isNextDay(day)">
+           {{day.dt_txt | date:"dd MMM"}}
+         </div>
+      </th>
+      <td>
+          <div>{{day.dt_txt | date:"HH:mm"}}</div></td>
+        <td><img *ngIf="weatherImgUrl(day)" [src]="weatherImgUrl(day)"></td>
+        <td>{{temperature(day)}}</td>
+        <td>{{day.weatherComplex}}</td>
+        <td><div class="tempMinMax">
+            {{tempComplex(day)}}
+        </div>
+            <div class="description">
+              <span>{{day.wind.speed | number:'1.0-0'}} {{serviceWeather.unitFor("wind")}}</span>
+              <span> clouds:{{day.clouds.all}}%</span>
+              <span>, {{day.main.pressure}} hpa</span>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>  
+</div>

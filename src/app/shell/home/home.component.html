@@ -1,7 +1,7 @@
 <div class="container" *ngIf="weatherService.currentWeather">
   <h3>Weather for {{ weatherService.currentWeather.name }}</h3>
   <h2>
-      <img [src]="picture" [alt]="weatherService.currentWeather.weather[0]?.description">
+      <img [src]="pictureUrl" [alt]="weatherService.currentWeather.weather[0]?.description">
       {{ weatherService.currentWeather.main.temp }}{{weatherService.unitFor("temp")}}
   </h2>
   <p>Pressure: {{weatherService.currentWeather.main.pressure}} hpa</p>
