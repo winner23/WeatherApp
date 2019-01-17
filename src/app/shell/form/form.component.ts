@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
   currentWeather: Current;
   temperatureType = "C";
   constructor(public weatherService: WeatherService, private router: Router) { }
-
+  navbarCollapsed = true;
   ngOnInit() {
   }
   find() {

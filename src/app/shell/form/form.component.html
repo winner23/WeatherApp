@@ -2,7 +2,7 @@
   <header>
     <nav class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
       <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
-              [attr.aria-expanded]="navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+              [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <form class="form-inline my-2 my-lg-0" (ngSubmit)="find()">
