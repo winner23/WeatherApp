@@ -3,7 +3,9 @@ import { HttpClient } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Current } from '../models/current.model';
-import { Forecast } from '../models/forecast.model';
+import { ForecastHourly } from '../models/forecast-hourly.model';
+import { ForecastDaily } from '../models/forecast-daily.model';
+import { Forecast } from '../models/forecast.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +15,6 @@ export class WeatherService {
   private API_URL = 'https://api.openweathermap.org/data/2.5/';
   public currentWeather: Current;
   
-  public forecastDayky: Forecast[];
   error: string;
   units = "metric";
   constructor(private http: HttpClient) { }
@@ -53,7 +54,7 @@ export class WeatherService {
   }
   forecast(hourly = true): Observable<Forecast[]> {
     if (hourly && this.currentWeather) {
-      return this.http.get<Forecast[]>(this.url("forecast"))
+      return this.http.get<ForecastHourly[]>(this.url("forecast"))
       .pipe(map( (response: any) => {
         this.error = undefined;
         return response.list;
@@ -63,7 +64,7 @@ export class WeatherService {
         return throwError(error);
       }));
       } else if (this.currentWeather) {
-        return this.http.get<Forecast[]>(this.url("forecast")+"&cnt=10")
+        return this.http.get<ForecastDaily[]>(this.url("forecast/daily")+"&cnt=10")
       .pipe(map( (response: any) => {
         this.error = undefined;
         return response.list;
