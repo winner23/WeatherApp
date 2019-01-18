@@ -1,3 +1,17 @@
-<p>
-  ten-forecast works!
-</p>
+<div class="container" *ngIf="forecastDaily">
+    <table mdbTable id="forecastTable">
+      <tbody>
+        <tr mdbTableCol *ngFor="let day of forecastDaily">
+          <th scope="row">
+            {{date(day.dt) | date:"dd MMMM"}}
+          </th>
+          <td><img *ngIf="weatherImgUrl(day)" [src]="weatherImgUrl(day)"></td>
+          <td>{{day.pressure}} hpa, </td>
+          <td>{{day.humidity}}%</td>
+          <td>
+            Wind: {{day.speed}} {{serviceWeather.unitFor("wind")}} Clouds: {{day.clouds}}
+          </td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
