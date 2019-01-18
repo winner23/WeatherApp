@@ -1,6 +1,4 @@
 export class Current {
-
-  
   coord: {
     lon: number,
     lat: number
